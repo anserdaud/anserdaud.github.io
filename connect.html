@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CONNECT - DR. ANSER DAUD</title>
+  <meta name="description" content="Get in touch with Dr. Anser Daud.">
+  <meta property="og:site_name" content="DR. ANSER DAUD">
+  <meta property="og:title" content="CONNECT">
+  <meta property="og:description" content="Get in touch with Dr. Anser Daud.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Raleway:wght@400;600&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="page-connect">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">DR. ANSER DAUD</a>
+    <nav class="main-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="advocacy.html">Advocacy</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="http://uoftorthopaedics.ca/cosmec" target="_blank" rel="noopener">COSMEC</a></li>
+        <li><a href="connect.html" aria-current="page">Connect</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav"><span></span></button>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
+  <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="advocacy.html">Advocacy</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="http://uoftorthopaedics.ca/cosmec" target="_blank" rel="noopener">COSMEC</a></li>
+        <li><a href="connect.html" aria-current="page">Connect</a></li>
+  </ul>
+</nav>
+
+<main>
+<section class="banner banner-page parallax" style="background-image: url('images/hero-connect.jpg');">
+  <div class="container">
+    <h1>Get In Touch</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container cols">
+    <div class="col">
+      <!--
+        CONTACT FORM SETUP
+        Right now (data-endpoint empty) the form opens the visitor's email app.
+        To receive messages straight to your inbox instead, create a free form at
+        https://formspree.io and paste its URL into data-endpoint, e.g.
+        data-endpoint="https://formspree.io/f/abcdwxyz"
+      -->
+      <form class="contact-form" id="contact-form" data-endpoint="" data-fallback-email="anser.daud@gmail.com" novalidate>
+        <h2 class="section-title">Connect with me!</h2>
+        <p class="required-note"><span class="req">*</span> Indicates required field</p>
+
+        <div class="field">
+          <span class="label">Name <span class="req">*</span></span>
+          <div class="name-row">
+            <div>
+              <input id="first-name" name="first_name" type="text" placeholder="First" autocomplete="given-name" required>
+              <label class="sublabel" for="first-name">First</label>
+            </div>
+            <div>
+              <input id="last-name" name="last_name" type="text" placeholder="Last" autocomplete="family-name" required>
+              <label class="sublabel" for="last-name">Last</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email <span class="req">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+
+        <div class="field">
+          <label for="message">Comment <span class="req">*</span></label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+
+        <input type="hidden" name="_subject" value="New message from your website">
+        <input class="hp-field" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <button class="btn" type="submit">Submit</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="col">
+      <figure class="figure" style="padding-top: 10px; text-align: left;"><img src="images/screenshot-2026-11-16-at-1-09-22-am.png" alt="Dr. Anser Daud"></figure>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">&copy; <span id="year">2026</span> Dr. Anser Daud</div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
