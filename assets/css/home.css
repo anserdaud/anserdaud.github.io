@@ -4,10 +4,25 @@
    ========================================================= */
 
 .banner-home {
-  /* darker, navy-tinted wash over the header photo */
-  --banner-overlay: rgba(4, 10, 30, 0.66);
-  /* same total height as before; the extra space is split evenly above and below the "Leaps and bounds" image */
-  padding: calc((var(--header-h) + 178px) / 2) 0;
+  /* dark navy wash over the header photo (images/hero-home-soft.jpg is the photo with extra blur) */
+  --banner-overlay: rgba(2, 5, 16, 0.78);
+  display: flex;
+  align-items: center;
+  height: 311px; /* the word wheel is centred in it */
+  padding: 0;
+}
+.banner-home > .container { width: 100%; z-index: 1; }
+/* very subtle dot screen over the photo */
+.banner-home::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 0, 0, .5) 0.8px, transparent 1.3px);
+  background-size: 4px 4px;
+  pointer-events: none;
+}
+@media (max-width: 766px) {
+  .banner-home { height: 285px; }
 }
 
 .meet { max-width: 336px; margin: 0 auto; }
@@ -219,55 +234,31 @@
   .connect-label { letter-spacing: .4px; }
 }
 
-/* ---------- Header welcome (replaces the "Leaps and bounds" image) ---------- */
+/* ---------- Header welcome: word wheel ---------- */
 .home-welcome {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 192px; /* same height the old image took, so the header keeps its size */
   color: #fff;
   text-shadow: 0 1px 20px rgba(0, 0, 0, .25);
 }
+/* Plain list of the words: what screen readers read, and what visitors who
+   ask for reduced motion see instead of the wheel */
 .welcome-pillars {
   margin: 0;
   font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
-  font-size: 40px;
+  font-size: 26px;
   font-style: italic;
-  font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.3;
 }
-.pillar-group { white-space: nowrap; }
-.welcome-pillars i {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin: 0 18px;
-  border-radius: 50%;
-  background: #cc6633; /* the orange of the old ampersand */
-  vertical-align: middle;
-  position: relative;
-  top: -2px;
-}
-/* narrower screens: three lines (Orthopaedic Surgery / Research · Education / Innovation · Advocacy) */
-@media (max-width: 1120px) {
-  .welcome-pillars { font-size: 44px; line-height: 1.3; }
-  .welcome-pillars i { margin: 0 16px; }
-  .welcome-pillars .pillar-mid { display: none; }
-  .pillar-group { display: block; }
-}
+.welcome-pillars span { display: block; }
 @media (max-width: 766px) {
-  .home-welcome { min-height: 153px; }
-  .welcome-pillars { font-size: 30px; line-height: 1.35; }
-  .welcome-pillars i { width: 5px; height: 5px; margin: 0 10px; top: -1px; }
-}
-@media (max-width: 360px) {
-  .welcome-pillars { font-size: 26px; }
-  .welcome-pillars i { margin: 0 8px; }
+  .welcome-pillars { font-size: 19px; }
 }
 
 /* Word wheel (built by assets/js/home.js): three rows visible, the middle one in focus */
 .word-wheel {
-  --row: 64px;
+  --row: 58px;
   position: relative;
   width: 100%;
   height: calc(var(--row) * 3);
@@ -282,11 +273,14 @@
   transition: transform .8s cubic-bezier(.65, 0, .35, 1);
 }
 .word-track li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: var(--row);
   font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
-  font-size: 52px;
+  font-size: 48px;
   font-style: italic;
-  line-height: var(--row);
+  line-height: 1.1;
   white-space: nowrap;
   color: #9aa6c4;
   opacity: 0;
@@ -305,12 +299,13 @@
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
-@media (max-width: 766px) {
-  .word-wheel { --row: 46px; }
-  .word-track li { font-size: 36px; }
+@media (max-width: 900px) {
+  .word-track li { font-size: 40px; }
 }
-@media (max-width: 360px) {
-  .word-track li { font-size: 31px; }
+/* phones: longer phrases may take two lines */
+@media (max-width: 766px) {
+  .word-wheel { --row: 56px; }
+  .word-track li { font-size: 26px; white-space: normal; text-wrap: balance; padding: 0 6px; }
 }
 
 /* ---------- About: half the space below Education & Training ---------- */
