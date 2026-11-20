@@ -1,0 +1,190 @@
+/* =========================================================
+   Advocacy page — "Published Writing" card grid
+   Cover colours per topic are the four --cover-* variables.
+   ========================================================= */
+
+.writing {
+  --cover-public-health: #174a5c;
+  --cover-health-policy: #26335d;
+  --cover-society: #5c2635;
+  --cover-letters: #ebe5da;
+  padding: 0 0 90px;
+}
+
+
+/* Publication names, gently scrolling */
+.outlets {
+  margin: 0 0 40px;
+  padding: 30px 0 26px;
+  overflow: hidden;
+  border-bottom: 1px solid #e6e6e6;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.outlets-track {
+  display: flex;
+  width: max-content;
+  animation: outlets-scroll 45s linear infinite;
+}
+.outlets:hover .outlets-track { animation-play-state: paused; }
+.outlets ul {
+  display: flex;
+  gap: 56px;
+  margin: 0;
+  padding: 0 56px 0 0;
+  list-style: none;
+}
+.outlets li {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #8d8d8d;
+  white-space: nowrap;
+}
+@keyframes outlets-scroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .outlets { -webkit-mask-image: none; mask-image: none; }
+  .outlets-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; }
+  .outlets ul { flex-wrap: wrap; justify-content: center; row-gap: 12px; padding: 0; }
+  .outlets ul[aria-hidden="true"] { display: none; }
+}
+
+/* Filter tabs + search */
+.writing-controls {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.writing-tabs {
+  display: flex;
+  gap: 6px 28px;
+  flex-wrap: wrap;
+}
+.writing-tabs button {
+  padding: 10px 0 8px;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  font: inherit;
+  font-size: 16px;
+  color: #555;
+  cursor: pointer;
+  transition: color .2s, border-color .2s;
+}
+.writing-tabs button span { font-size: 12px; color: #9a9a9a; margin-left: 2px; }
+.writing-tabs button:hover { color: var(--dark); }
+.writing-tabs button[aria-pressed="true"] { color: var(--dark); border-bottom-color: var(--dark); }
+.writing-tabs button:focus-visible,
+.writing-search input:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+
+.writing-search { flex: 0 1 300px; }
+.writing-search input {
+  width: 100%;
+  padding: 10px 2px 8px;
+  border: 0;
+  border-bottom: 1px solid #bdbdbd;
+  border-radius: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 16px;
+  color: var(--text);
+  -webkit-appearance: none;
+          appearance: none;
+}
+.writing-search input::placeholder { color: #8a8a8a; }
+
+.writing-status { min-height: 22px; margin: 18px 0 18px; font-size: 14px; color: var(--muted); }
+
+/* Card grid */
+.writing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 48px 32px;
+}
+.piece[hidden] { display: none; }
+.piece-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.piece-cover {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  aspect-ratio: 2 / 1;
+  padding: 20px;
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+  background-color: var(--cover);
+  background-image: radial-gradient(120% 90% at 15% 0%, rgba(255, 255, 255, .14), transparent 60%);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.cover-public-health { --cover: var(--cover-public-health); }
+.cover-health-policy { --cover: var(--cover-health-policy); }
+.cover-society { --cover: var(--cover-society); }
+.cover-letters { --cover: var(--cover-letters); color: #2b2b2b; }
+
+.cover-outlet {
+  padding: 9px 4px 8px;
+  border-top: 3px double currentColor;
+  border-bottom: 1px solid currentColor;
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 2.1vw, 27px);
+  font-weight: 600;
+  line-height: 1.15;
+}
+.cover-year {
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  opacity: .8;
+}
+
+.piece-meta { margin: 16px 0 6px; font-size: 14px; color: var(--muted); }
+.piece-title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.32;
+  color: var(--dark);
+  text-wrap: balance;
+}
+
+a.piece-link:hover .piece-cover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0, 0, 0, .14); }
+a.piece-link:hover .piece-title { text-decoration: underline; text-underline-offset: 3px; }
+a.piece-link:focus-visible { outline: 2px solid var(--link); outline-offset: 6px; }
+
+.writing-empty { padding: 40px 0; text-align: center; color: var(--muted); }
+
+.writing-closing {
+  margin: 80px auto 0;
+  padding-top: 28px;
+  max-width: 420px;
+  border-top: 1px solid #e3e3e3;
+  text-align: center;
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 400;
+  color: #8d8d8d;
+}
+
+@media (max-width: 1000px) {
+  .writing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .writing { padding: 0 0 64px; }
+  .writing-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .writing-controls { flex-direction: column; align-items: stretch; }
+  .writing-tabs { gap: 2px 22px; }
+  .writing-search { flex-basis: auto; }
+  .outlets li { font-size: 20px; }
+}
