@@ -4,6 +4,8 @@
    ========================================================= */
 
 .banner-home {
+  /* darker, navy-tinted wash over the header photo */
+  --banner-overlay: rgba(4, 10, 30, 0.66);
   /* same total height as before; the extra space is split evenly above and below the "Leaps and bounds" image */
   padding: calc((var(--header-h) + 178px) / 2) 0;
 }
