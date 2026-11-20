@@ -265,6 +265,54 @@
   .welcome-pillars i { margin: 0 8px; }
 }
 
+/* Word wheel (built by assets/js/home.js): three rows visible, the middle one in focus */
+.word-wheel {
+  --row: 64px;
+  position: relative;
+  width: 100%;
+  height: calc(var(--row) * 3);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
+          mask-image: linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
+}
+.word-track {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform .8s cubic-bezier(.65, 0, .35, 1);
+}
+.word-track li {
+  height: var(--row);
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+  font-size: 52px;
+  font-style: italic;
+  line-height: var(--row);
+  white-space: nowrap;
+  color: #9aa6c4;
+  opacity: 0;
+  transform: scale(.6);
+  transition: opacity .8s ease, transform .8s cubic-bezier(.65, 0, .35, 1), color .8s ease;
+}
+.word-track li.is-near { opacity: .45; transform: scale(.62); }
+.word-track li.is-current { opacity: 1; transform: none; color: #fff; }
+.word-wheel.is-resetting .word-track,
+.word-wheel.is-resetting li { transition: none; }
+.home-welcome.has-wheel .welcome-pillars {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+@media (max-width: 766px) {
+  .word-wheel { --row: 46px; }
+  .word-track li { font-size: 36px; }
+}
+@media (max-width: 360px) {
+  .word-track li { font-size: 31px; }
+}
+
 /* ---------- About: half the space below Education & Training ---------- */
 .about-section { padding-bottom: 32px; } /* + the last item's 6px margin = 38px, half the old 75px */
 .about-section .paragraph > ul:last-child { margin-bottom: 0; }
