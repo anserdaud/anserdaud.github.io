@@ -187,6 +187,11 @@
   text-shadow: 0 1px 20px rgba(0, 0, 0, .25);
   text-wrap: balance;
 }
+/* On computers the photo stays still while the page scrolls (see .parallax);
+   nudge it up by about 12% of the header's height so the heads sit higher */
+@media (hover: hover) and (min-width: 901px) {
+  .banner-research { background-position: center -38px; }
+}
 @media (max-width: 766px) {
   .banner-research { height: 285px; }
   .banner-research h1 { font-size: 34px; }
