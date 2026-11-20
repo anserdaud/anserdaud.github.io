@@ -198,3 +198,44 @@ a.piece-link:focus-visible { outline: 2px solid var(--link); outline-offset: 6px
   .writing-search { flex-basis: auto; }
   .outlets .outlet { --s: .85; }
 }
+
+/* ---------- Header: same treatment as the Home and Research headers ---------- */
+.banner-advocacy {
+  /* light navy wash: with the dot screen, the header is 45% darker than the
+     earlier rgba(0, 0, 0, .3) one (images/hero-advocacy-soft.jpg is the photo
+     with a little extra blur, as on the Home page) */
+  --banner-overlay: rgba(2, 6, 20, 0.64);
+  display: flex;
+  align-items: center;
+  height: 311px;
+  padding: var(--header-h) 0 0; /* title centred between the bottom of the menu and the bottom of the header */
+}
+.banner-advocacy > .container { width: 100%; z-index: 1; }
+/* very subtle dot screen over the photo */
+.banner-advocacy::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 0, 0, .5) 0.8px, transparent 1.3px);
+  background-size: 4px 4px;
+  pointer-events: none;
+}
+.banner-advocacy h1 {
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+  font-size: 48px;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.1;
+  text-shadow: 0 1px 20px rgba(0, 0, 0, .25);
+  text-wrap: balance;
+}
+/* On computers the photo stays still while the page scrolls (see .parallax);
+   move it up so the figure sits level with the title */
+@media (hover: hover) and (min-width: 901px) {
+  .banner-advocacy { background-position: center -110px; }
+}
+@media (max-width: 766px) {
+  .banner-advocacy { height: 285px; }
+  .banner-advocacy h1 { font-size: 34px; }
+}
