@@ -8,8 +8,8 @@
   --banner-overlay: rgba(2, 5, 16, 0.78);
   display: flex;
   align-items: center;
-  height: 311px; /* the word wheel is centred in it */
-  padding: 0;
+  height: 311px;
+  padding: var(--header-h) 0 0; /* centre the word wheel between the bottom of the menu and the bottom of the header */
 }
 .banner-home > .container { width: 100%; z-index: 1; }
 /* very subtle dot screen over the photo */
