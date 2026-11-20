@@ -7,7 +7,34 @@
 .media-intro { padding-bottom: 90px; }
 .media-intro .cols { align-items: center; }
 
-.media-highlight img { width: 100%; height: auto; }
+/* "As seen on" / "Initiatives" logo panel */
+.logo-panel { display: grid; gap: 26px; container-type: inline-size; }
+.logo-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 14px;
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #8a8a8a;
+}
+.logo-label::after { content: ""; flex: 1; border-top: 1px solid #e3e3e3; }
+.logo-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.logo-row li { display: flex; align-items: center; justify-content: center; }
+.logo-row img { display: block; width: auto; max-width: none; height: min(var(--h), calc(var(--k) * 1cqw)); }
+.logo-row + .logo-row { margin-top: 16px; }
 
 /* ---------- Spotlight photo ---------- */
 .spotlight { margin: 60px 0 0; }
@@ -151,6 +178,11 @@
 }
 @media (max-width: 766px) {
   .media-intro { padding-bottom: 60px; }
+  /* phones: each group becomes a 3-column grid of logos */
+  .logo-rows { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 12px; }
+  .logo-rows .logo-row { display: contents; }
+  .logo-row + .logo-row { margin-top: 0; }
+  .logo-row img { width: auto; height: auto; max-width: 100%; max-height: calc(var(--h) * .85); }
   .spotlight { margin-top: 40px; }
   .coverage { grid-template-columns: minmax(0, 1fr); gap: 40px; margin-top: 50px; }
   .clip-head { min-height: 72px; padding: 12px 18px; gap: 16px; }
