@@ -1,0 +1,158 @@
+/* =========================================================
+   Media page: intro + highlight, Queen's Park spotlight,
+   then one stream of coverage (video cards, then feature cards)
+   ========================================================= */
+
+/* ---------- Intro ---------- */
+.media-intro { padding-bottom: 90px; }
+.media-intro .cols { align-items: center; }
+
+.media-highlight img { width: 100%; height: auto; }
+
+/* ---------- Spotlight photo ---------- */
+.spotlight { margin: 60px 0 0; }
+.spotlight img { display: block; width: 100%; height: auto; }
+.spotlight figcaption {
+  max-width: 760px;
+  margin: 14px auto 0;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* ---------- Coverage stream: video cards, then feature cards ---------- */
+.coverage {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 56px 40px;
+  margin-top: 80px;
+}
+
+/* Video cards */
+.clip {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .05);
+}
+.clip-head {
+  flex: 1 0 auto; /* in a row, extra height goes here so the videos line up */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 20px;
+  min-height: 84px;
+  padding: 12px 24px;
+}
+.clip-logo { display: block; flex: none; width: auto; height: var(--h); max-width: 100%; }
+.clip-info { flex: 1 1 200px; min-width: 0; }
+.clip .video { margin: 0; }
+.nowrap { white-space: nowrap; }
+.clip-title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--dark);
+}
+
+/* Feature cards */
+.story { position: relative; }
+.story-frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.story-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.story-contain .story-frame img { object-fit: contain; object-position: center; }
+.story-video .story-frame { background: #000; }
+.story-video .story-frame img { object-position: center; }
+.story-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .62);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, .85);
+  transition: background .2s;
+}
+.story-play::after {
+  content: "";
+  position: absolute;
+  left: 26px;
+  top: 21px;
+  border-style: solid;
+  border-width: 11px 0 11px 18px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.story-brand { display: flex; align-items: center; height: 50px; margin: 22px 0 12px; }
+.story-logo { display: block; width: auto; height: var(--h); }
+.story-meta { margin: 0 0 6px; font-size: 14px; color: var(--muted); }
+.story-title {
+  margin: 0 0 12px;
+  font-family: var(--font-body);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.32;
+  text-wrap: balance;
+}
+.story-title a { color: var(--dark); text-decoration: none; }
+/* the whole card is the link */
+.story-title a::after { content: ""; position: absolute; inset: 0; }
+
+.clip-link { margin-top: 4px; }
+.clip-link,
+.story-cta {
+  display: inline-block;
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--link);
+  text-decoration: none;
+}
+.clip-link:hover { color: var(--link-hover); text-decoration: underline; text-underline-offset: 3px; }
+.ext { display: inline-block; width: 10px; height: 10px; margin-left: 5px; vertical-align: 0; }
+
+.story:hover .story-frame { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0, 0, 0, .14); }
+.story:hover .story-title a { text-decoration: underline; text-underline-offset: 3px; }
+.story:hover .story-cta { color: var(--link-hover); }
+.story:hover .story-play { background: rgba(0, 0, 0, .8); }
+.story-title a:focus-visible { outline: none; }
+.story-title a:focus-visible::after { outline: 2px solid var(--link); outline-offset: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .story-frame { transition: none; }
+  .story:hover .story-frame { transform: none; }
+}
+
+/* ---------- Smaller screens ---------- */
+@media (max-width: 900px) {
+  .coverage { gap: 44px 24px; margin-top: 60px; }
+}
+@media (max-width: 766px) {
+  .media-intro { padding-bottom: 60px; }
+  .spotlight { margin-top: 40px; }
+  .coverage { grid-template-columns: minmax(0, 1fr); gap: 40px; margin-top: 50px; }
+  .clip-head { min-height: 72px; padding: 12px 18px; gap: 16px; }
+  .clip-title { font-size: 16px; }
+  .story-title { font-size: 18px; }
+}
