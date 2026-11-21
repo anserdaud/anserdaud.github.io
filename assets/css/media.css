@@ -189,3 +189,39 @@
   .clip-title { font-size: 16px; }
   .story-title { font-size: 18px; }
 }
+
+/* ---------- Header: same treatment as the Home, Research and Advocacy headers ---------- */
+.banner-media {
+  /* light navy wash: with the dot screen, the header is 45% darker than the
+     earlier rgba(0, 0, 0, .3) one (images/hero-media-soft.jpg is the photo
+     with a little extra blur, as on the Home page) */
+  --banner-overlay: rgba(2, 6, 20, 0.59);
+  display: flex;
+  align-items: center;
+  height: 311px;
+  padding: var(--header-h) 0 0; /* title centred between the bottom of the menu and the bottom of the header */
+}
+.banner-media > .container { width: 100%; z-index: 1; }
+/* very subtle dot screen over the photo */
+.banner-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 0, 0, .5) 0.8px, transparent 1.3px);
+  background-size: 4px 4px;
+  pointer-events: none;
+}
+.banner-media h1 {
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+  font-size: 48px;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.1;
+  text-shadow: 0 1px 20px rgba(0, 0, 0, .25);
+  text-wrap: balance;
+}
+@media (max-width: 766px) {
+  .banner-media { height: 285px; }
+  .banner-media h1 { font-size: 34px; }
+}
