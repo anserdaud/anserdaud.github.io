@@ -1,0 +1,29 @@
+/* =========================================================
+   Connect page: header in the same height, darkness and title font
+   as the Home, Research, Advocacy and Media headers
+   (no dot screen or extra blur here yet)
+   ========================================================= */
+
+.banner-connect {
+  /* light navy wash, 45% darker than the earlier rgba(0, 0, 0, .3) one */
+  --banner-overlay: rgba(2, 6, 20, 0.66);
+  display: flex;
+  align-items: center;
+  height: 311px;
+  padding: var(--header-h) 0 0; /* title centred between the bottom of the menu and the bottom of the header */
+}
+.banner-connect > .container { width: 100%; }
+.banner-connect h1 {
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+  font-size: 48px;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.1;
+  text-shadow: 0 1px 20px rgba(0, 0, 0, .25);
+  text-wrap: balance;
+}
+@media (max-width: 766px) {
+  .banner-connect { height: 285px; }
+  .banner-connect h1 { font-size: 34px; }
+}
